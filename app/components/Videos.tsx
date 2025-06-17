@@ -15,7 +15,7 @@ const Videos = ({
     snippet: {
       title: string;
       channelId: string;
-      channelTitle?: string;
+      channelTitle: string;
       thumbnails: {
         high: {
           url: string;
