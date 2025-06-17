@@ -14,8 +14,6 @@ const ChannelDetails = () => {
 
   const params = useParams();
 
-  console.log(channelDetails, videos);
-
   useEffect(() => {
     fetchFromAPI(`channels?part=snippet&id=${params.id}`).then((data) => {
       setChannelDetails(data?.items[0]);
@@ -39,10 +37,12 @@ const ChannelDetails = () => {
               height: "300px",
             }}
           />
-          <ChannelCard
-            channelDetail={channelDetails}
-            marginTop='-110px'
-          />
+          {channelDetails && (
+            <ChannelCard
+              channelDetail={channelDetails}
+              marginTop='-110px'
+            />
+          )}
         </Box>
         <Box
           display='flex'
