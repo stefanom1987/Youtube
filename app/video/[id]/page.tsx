@@ -11,8 +11,21 @@ import { Check, CheckCircle } from "@mui/icons-material";
 import Videos from "@/app/components/Videos";
 import { fetchFromAPI } from "@/app/utils/fetchFromAPI";
 
+type VideoDetailType = {
+  snippet: {
+    title: string;
+    channelId: string;
+    channelTitle: string;
+    description: string;
+  };
+  statistics: {
+    viewCount: string;
+    likeCount: string;
+  };
+};
+
 const VideoDetail = () => {
-  const [videoDetail, setVideoDetail] = useState(null);
+  const [videoDetail, setVideoDetail] = useState<VideoDetailType | null>(null);
   const [videos, setVideos] = useState(null);
   const { id } = useParams();
 
@@ -110,7 +123,7 @@ const VideoDetail = () => {
           justifyContent='center'
         >
           <Videos
-            videos={videos}
+            videos={videos ?? []}
             direction='column'
           />
         </Box>
